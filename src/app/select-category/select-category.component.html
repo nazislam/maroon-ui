@@ -1,0 +1,9 @@
+<p>component_: select-category</p>
+
+<form (ngSubmit)="onSubmit()">
+  <div *ngFor="let category of categoryList">
+    <input type="checkbox" id="category.categoryId" [(ngModel)]="category.categoryId" [name]="category.categoryId" [value]="category.categoryName">
+    <label for="category.categoryId">{{ category.categoryName }}</label><br>
+  </div>
+  <button type="submit">Submit</button>
+</form>
