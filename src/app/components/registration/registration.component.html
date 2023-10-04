@@ -1,0 +1,16 @@
+<p>registration works!</p>
+
+<form (submit)="onSubmit()">
+  <label >First name: </label>
+  <input type="text" [(ngModel)]="firstName" name="firstName"> <br>
+
+  <label >Email address: </label>
+  <input type="email" [(ngModel)]="userEmail" name="userEmail"> <br>
+
+  <label >Password: </label>
+  <input type="password"  [(ngModel)]="userPassword" name="userPassword"> <br>
+
+  <button type="submit">Sign up</button>
+</form>
+
+<router-outlet></router-outlet>

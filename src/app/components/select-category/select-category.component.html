@@ -1,5 +1,6 @@
 <p>component_: select-category</p>
-
+<h2>What are the top most priorities in your life?</h2>
+<h4>Select upto 3</h4>
 <form (ngSubmit)="onSubmit(categories)">
   <div *ngFor="let category of categories">
     <input type="checkbox" [id]="category.categoryId" [(ngModel)]="category.checked" [name]="category.categoryId">
