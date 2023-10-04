@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CategoryService } from '../../services/categoryService/category-service';
+import { UserService } from 'src/app/services/userService/user.service';
 
 @Component({
   selector: 'app-select-category',
@@ -15,7 +16,8 @@ export class SelectCategoryComponent implements OnInit {
   public categories: any = [];
 
   constructor(
-    private categoryService: CategoryService
+    private categoryService: CategoryService,
+    private userService: UserService
   ) {
 
   }
@@ -27,21 +29,24 @@ export class SelectCategoryComponent implements OnInit {
     });
   }
 
-  // public selectCategForm = new FormGroup({
-  //   categoryId: new FormControl(''),
-  //   categoryName: new FormControl(''),
-  //   userId: new FormControl(''),
-  // });
-
   public onSubmit(categories: any) {
-    console.log('clicking onSubmit()', JSON.stringify(categories));
     let selectedCategories: any = [];
+    let reqPayLoad = {
+      "userInfo": {},
+      "categories": []
+    };
     categories.forEach((category: { checked: any; }) => {
       if (category.checked) {
         selectedCategories.push(category);
       }
     });
-    this.categoryService.saveCategories(selectedCategories);
+    console.log('--> selectedCategories', selectedCategories);
+    let userEmail = sessionStorage.getItem('userEmail');
+    reqPayLoad.userInfo = { "email": userEmail };
+    reqPayLoad.categories = selectedCategories;
+    this.userService.updateCategories(reqPayLoad).subscribe((response: any) => {
+      console.log('response', response);
+    });
   }
   
 }

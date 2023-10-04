@@ -13,6 +13,7 @@ import { PortalComponent } from './components/portal/portal.component';
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes = [
   {path: '', component: HomepageComponent},
@@ -34,7 +35,8 @@ const routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule
   ],
   providers: [CategoryService, UserService],
   bootstrap: [AppComponent]

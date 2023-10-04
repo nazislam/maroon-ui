@@ -22,4 +22,10 @@ export class UserService {
     return this.http.post('http://localhost:4000/user/', inputUser, { headers: headers });
   }
 
+  updateCategories(inputData: any) {
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:4000/update/user/category/', inputData, { headers: headers });
+  }
+
 }
